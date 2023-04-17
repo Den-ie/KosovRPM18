@@ -1,0 +1,126 @@
+﻿<Window x:Class="KosovRPM18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KosovRPM18"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="DB" 
+                  Grid.ColumnSpan="5"
+                  IsReadOnly="True"
+                  Margin="10,20,10,10"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="2*"
+                                    Header="Код"
+                                    Binding="{Binding id}"/>
+
+                <DataGridTextColumn Width="7*"
+                                    Header="ФИО"
+                                    Binding="{Binding Fio}"/>
+
+                <DataGridTextColumn Width="3*"
+                                    Header="Команда"
+                                    Binding="{Binding Team}"/>
+
+                <DataGridTextColumn Width="8*"
+                                    Header="Дата приема в команду"
+                                    Binding="{Binding JoinDate}"/>
+
+                <DataGridTextColumn Width="2*"
+                                    Header="Голы"
+                                    Binding="{Binding GoalCount}"/>
+
+                <DataGridTextColumn Width="2*"
+                                    Header="Пасы"
+                                    Binding="{Binding PassCount}"/>
+
+                <DataGridTextColumn Width="5*"
+                                    Header="Штрафное время"
+                                    Binding="{Binding PenaltyTime}"/>
+
+                <DataGridTextColumn Width="5*"
+                                    Header="Кол-во матчей"
+                                    Binding="{Binding Matches}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Margin="10"
+                Grid.Row="2"
+                Content="Добавит запись"
+                Click="AddButton"/>
+
+        <Button Margin="10"
+                Grid.Row="3"
+                Grid.Column="1"
+                Content="Изменить запись"
+                Click="Edit"/>
+
+        <Button Margin="10"
+                Grid.Row="2"
+                 Grid.Column="2"
+                Content="Удаление записи"
+                Click="Delete"/>
+
+        <TextBox x:Name="txtFind"
+                 Grid.Row="1"
+                 Grid.Column="3"
+                 Margin="10,10,10,60"/>
+
+
+        <Button  Grid.Row="1"
+                 Grid.Column="4"
+                 Margin="10,60,85,10"
+                 Content="Фильтр"
+                 Click="FilterButton"/>
+
+        <Button  Grid.Row="1"
+                 Grid.Column="4"
+                 Margin="85,60,10,10"
+                 Content="Убать"
+                 Click="CancelFiltered"/>
+
+        <TextBox x:Name="txtFilter"
+                 Grid.Row="1"
+                 Grid.Column="4"
+                 Margin="10,10,10,60"/>
+
+
+        <Button  Grid.Row="1"
+                 Grid.Column="3"
+                 Margin="10,60,10,10"
+                 Content="Поиск по ФИО"
+                 Click="FindButton"/>
+
+
+        <Menu VerticalAlignment="Top"
+              Grid.ColumnSpan="5">
+            <MenuItem Header="Файл">
+
+                <MenuItem Header="О программе"
+                          Click="About"/>
+
+                <Separator></Separator>
+
+                <MenuItem Header="Выход"
+                          Click="Exit"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
