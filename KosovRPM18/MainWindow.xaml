@@ -27,37 +27,33 @@
                   Margin="10,20,10,10"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="2*"
-                                    Header="Код"
-                                    Binding="{Binding id}"/>
-
-                <DataGridTextColumn Width="7*"
-                                    Header="ФИО"
-                                    Binding="{Binding Fio}"/>
+                <DataGridTextColumn Width="1*"
+                                    Header="№"
+                                    Binding="{Binding PointNumber}"/>
 
                 <DataGridTextColumn Width="3*"
-                                    Header="Команда"
-                                    Binding="{Binding Team}"/>
+                                    Header="Дата перевода"
+                                    Binding="{Binding TransferDate}"/>
 
-                <DataGridTextColumn Width="8*"
-                                    Header="Дата приема в команду"
-                                    Binding="{Binding JoinDate}"/>
-
-                <DataGridTextColumn Width="2*"
-                                    Header="Голы"
-                                    Binding="{Binding GoalCount}"/>
+                <DataGridTextColumn Width="3*"
+                                    Header="Получатель"
+                                    Binding="{Binding RecieverOrg}"/>
 
                 <DataGridTextColumn Width="2*"
-                                    Header="Пасы"
-                                    Binding="{Binding PassCount}"/>
+                                    Header="Адресс"
+                                    Binding="{Binding OrgAdress}"/>
 
-                <DataGridTextColumn Width="5*"
-                                    Header="Штрафное время"
-                                    Binding="{Binding PenaltyTime}"/>
+                <DataGridTextColumn Width="3*"
+                                    Header="Коммерческая"
+                                    Binding="{Binding CommercialOrg}"/>
 
-                <DataGridTextColumn Width="5*"
-                                    Header="Кол-во матчей"
-                                    Binding="{Binding Matches}"/>
+                <DataGridTextColumn Width="2.5*"
+                                    Header="Тип перевода"
+                                    Binding="{Binding TransferType}"/>
+
+                <DataGridTextColumn Width="3*"
+                                    Header="Сумма перевода"
+                                    Binding="{Binding TransferSumm}"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace KosovRPM18
 {
-    public partial class AccountingEntites : DbContext
+    public partial class AccountingEntities : DbContext
     {
-        private static AccountingEntites context;
+        private static AccountingEntities context;
 
-        public static AccountingEntites GetContext()
+        public static AccountingEntities GetContext()
         {
             if (context == null)
-                context = new AccountingEntites();
+                context = new AccountingEntities();
             return context;
         }
     }
