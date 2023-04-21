@@ -108,18 +108,24 @@ namespace KosovRPM18
             }
         }
 
-        List<Accounting> _teammember;
+        List<Accounting> _accounting;
 
         private void FilterButton(object sender, RoutedEventArgs e)
         {
-            _teammember = db.Accountings.ToList();
-            var filtered = _teammember.Where(_teammember => _teammember.RecieverOrg.Contains(txtFilter.Text));
+            _accounting = db.Accountings.ToList();
+            var filtered = _accounting.Where(_accounting => _accounting.RecieverOrg.Contains(txtFilter.Text));
             DB.ItemsSource = filtered;
         }
 
         private void CancelFiltered(object sender, RoutedEventArgs e)
         {
-            DB.ItemsSource = _teammember;
+            DB.ItemsSource = _accounting;
+        }
+
+        private void outtt(object sender, RoutedEventArgs e)
+        {
+            var gen = db.Database.SqlQuery<Accounting>("SELECT *  FROM Accounting WHERE CommercialOrg = 1");
+            DB.ItemsSource = gen.ToList();
         }
     }
 }
