@@ -89,7 +89,7 @@
         <Button  Grid.Row="1"
                  Grid.Column="4"
                  Margin="85,60,10,10"
-                 Content="Убрать"
+                 Content="Сбросить"
                  Click="CancelFiltered"/>
 
         <TextBox x:Name="txtFilter"
@@ -118,12 +118,23 @@
             </MenuItem>
             
             <MenuItem Header="Запросы">
-                <MenuItem Header="излвеч"
+                <MenuItem Header="Убрать не коммерческие орг."
                           Click="outtt"/>
 
                 <Separator></Separator>
 
-                <MenuItem Header="вцфвцф"/>
+                <MenuItem Header="Выборка переводов больше чем 25.000"
+                          Click="MoreThan25k"/>
+                
+                <Separator></Separator>
+
+                <MenuItem Header="Обновить пожертвования меньше 25.000"
+                          Click="Update"/>
+                
+                <Separator></Separator>
+
+                <MenuItem Header="Удалить номера после 10"
+                          Click="Deleting"/>
             </MenuItem>
         </Menu>
     </Grid>

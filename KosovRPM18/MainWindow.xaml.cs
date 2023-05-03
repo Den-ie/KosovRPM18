@@ -42,6 +42,8 @@ namespace KosovRPM18
             AddRecord f = new AddRecord();
             f.ShowDialog();
             DB.Focus();
+            _accounting = db.Accountings.ToList();
+            DB.ItemsSource = _accounting;
         }
 
         private void Edit(object sender, RoutedEventArgs e)
@@ -55,6 +57,8 @@ namespace KosovRPM18
                 f.ShowDialog();
                 DB.Items.Refresh();
                 DB.Focus();
+                _accounting = db.Accountings.ToList();
+                DB.ItemsSource = _accounting;
             }
         }
 
@@ -69,6 +73,8 @@ namespace KosovRPM18
                     Accounting row = (Accounting)DB.SelectedItems[0];
                     db.Accountings.Remove(row);
                     db.SaveChanges();
+                    _accounting = db.Accountings.ToList();
+                    DB.ItemsSource = _accounting;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -119,13 +125,36 @@ namespace KosovRPM18
 
         private void CancelFiltered(object sender, RoutedEventArgs e)
         {
+            _accounting = db.Accountings.ToList();
             DB.ItemsSource = _accounting;
         }
 
         private void outtt(object sender, RoutedEventArgs e)
         {
-            var gen = db.Database.SqlQuery<Accounting>("SELECT *  FROM Accounting WHERE CommercialOrg = 1");
+            var gen = db.Database.SqlQuery<Accounting>("SELECT * FROM Accounting WHERE CommercialOrg = 1");
             DB.ItemsSource = gen.ToList();
+        }
+
+        private void MoreThan25k(object sender, RoutedEventArgs e)
+        {
+            var gen = db.Database.SqlQuery<Accounting>("SELECT * FROM Accounting WHERE TransferSumm >= 25000");
+            DB.ItemsSource = gen.ToList();
+        }
+
+        private void Update(object sender, RoutedEventArgs e)
+        {
+            db.Database.ExecuteSqlCommand("UPDATE Accounting SET TransferType='Пожертвование' WHERE TransferSumm < 25000");
+            db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            _accounting = db.Accountings.ToList();
+            DB.ItemsSource = _accounting;
+        }
+
+        private void Deleting(object sender, RoutedEventArgs e)
+        {
+            db.Database.ExecuteSqlCommand("DELETE FROM Accounting WHERE PointNumber > 10");
+            db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            _accounting = db.Accountings.ToList();
+            DB.ItemsSource = _accounting;
         }
     }
 }
