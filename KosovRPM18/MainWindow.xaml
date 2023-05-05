@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KosovRPM18"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -60,19 +59,22 @@
         <Button Margin="10"
                 Grid.Row="2"
                 Content="Добавит запись"
-                Click="AddButton"/>
+                Click="AddButton"
+                x:Name="AddButtone"/>
 
         <Button Margin="10"
                 Grid.Row="3"
                 Grid.Column="1"
                 Content="Изменить запись"
-                Click="Edit"/>
+                Click="Edit"
+                x:Name="EditButton"/>
 
         <Button Margin="10"
                 Grid.Row="2"
                  Grid.Column="2"
                 Content="Удаление записи"
-                Click="Delete"/>
+                Click="Delete"
+                x:Name="DeleteButton"/>
 
         <TextBox x:Name="txtFind"
                  Grid.Row="1"
@@ -134,7 +136,8 @@
                 <Separator></Separator>
 
                 <MenuItem Header="Удалить номера после 10"
-                          Click="Deleting"/>
+                          Click="Deleting"
+                          x:Name="ZaprosDelete"/>
             </MenuItem>
         </Menu>
     </Grid>

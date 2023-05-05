@@ -23,19 +23,24 @@ namespace KosovRPM18
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
+            db.Accountings.Load();
+            DB.ItemsSource = db.Accountings.Local.ToBindingList();
+            Title = "Текущий пользователь: " + user.Login;
+
+            if (user.Rights == false)
+            {
+                DeleteButton.IsEnabled = false;
+                EditButton.IsEnabled = false;
+                AddButtone.IsEnabled = false;
+                ZaprosDelete.IsEnabled = false;
+            }
             this.Height += 25;
         }
 
         AccountingEntities db = AccountingEntities.GetContext();
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            db.Accountings.Load();
-            DB.ItemsSource = db.Accountings.Local.ToBindingList();
-        }
 
         private void AddButton(object sender, RoutedEventArgs e)
         {

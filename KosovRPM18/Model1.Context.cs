@@ -26,5 +26,6 @@ namespace KosovRPM18
         }
     
         public virtual DbSet<Accounting> Accountings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
